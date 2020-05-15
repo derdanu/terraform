@@ -42,3 +42,8 @@ data "azurerm_public_ip" "publicip" {
   name                = azurerm_public_ip.publicip.name
   resource_group_name = azurerm_resource_group.rg.name
 }
+
+output "instance_ip_addr" {
+  value       = data.azurerm_public_ip.publicip.ip_address
+  description = "The public IP address of the instance."
+}
