@@ -55,6 +55,20 @@ resource "azurerm_network_security_group" "nsg" {
   }
 }
 
+resource "azurerm_network_interface" "nic" {
+  name                      = "${var.resource_prefix}NIC"
+  location                  = var.location
+  resource_group_name       = azurerm_resource_group.rg.name
+  network_security_group_id = azurerm_network_security_group.nsg.id
+
+  ip_configuration {
+    name                          = "${var.resource_prefix}NICConfg"
+    subnet_id                     = azurerm_subnet.subnet.id
+    private_ip_address_allocation = "dynamic"
+    public_ip_address_id          = azurerm_public_ip.publicip.id
+  }
+}
+
 output "instance_ip_addr" {
   value       = azurerm_public_ip.publicip.ip_address
   description = "The public IP address of the instance."
