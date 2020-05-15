@@ -4,22 +4,27 @@ provider "azurerm" {
 }
 
 variable "admin_username" {
+    default = "azureuser"
 }
 
 variable "admin_password" {
 }
 
-
 variable "resource_prefix" {
   default = "my"
 }
+
+variable "resource_group_name" {
+  default = "TFResourceGroup"
+}
+
 
 variable "location" {
   default = "westus"
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "${var.resource_prefix}TFResourceGroup"
+  name     = "${var.resource_prefix}${var.variable "resource_group_name}"
   location = var.location
 }
 
