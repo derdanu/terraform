@@ -1,5 +1,6 @@
 provider "azurerm" {
-  version = "~>1.31"
+  version = "=2.5.0"
+  features {}
 }
 
 variable "resource_prefix" {
