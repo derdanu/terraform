@@ -3,6 +3,13 @@ provider "azurerm" {
   features {}
 }
 
+variable "admin_username" {
+}
+
+variable "admin_password" {
+}
+
+
 variable "resource_prefix" {
   default = "my"
 }
